@@ -17,6 +17,7 @@ export default class Progress extends Component{
     };
 
     render() {
+
         return(
             <CircularProgress size={this.props.size} style={this.props.style} color={this.props.color}/>
         )
