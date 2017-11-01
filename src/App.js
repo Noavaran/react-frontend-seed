@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Grid from 'material-ui/Grid';
-import Header from './components/Layout/Header';
-import Footer from './components/Layout/Footer';
-import Content from './components/Layout/Content';
+import {Header, Footer, Content} from './components/Layout';
 
 class App extends Component {
 
