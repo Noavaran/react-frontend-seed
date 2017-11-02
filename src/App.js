@@ -1,27 +1,19 @@
 import React, { Component } from 'react';
+import logo from './logo.svg';
 import './App.css';
-import Grid from 'material-ui/Grid';
-import {Header, Footer, Content} from './components/Layout';
 
 class App extends Component {
-
   render() {
     return (
-        <Grid container>
-          <Grid item lg={12} md={12} sm={12} xs={12} xl={12}>
-            <Grid container>
-              <Grid item lg={12} md={12} sm={12} xs={12} xl={12}>
-                <Header />
-              </Grid>
-              <Grid item lg={12} md={12} sm={12} xs={12} xl={12}>
-                <Content/>
-              </Grid>
-              <Grid item lg={12} md={12} sm={12} xs={12} xl={12}>
-                <Footer/>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h1 className="App-title">Welcome to React</h1>
+        </header>
+        <p className="App-intro">
+          To get started, edit <code>src/App.js</code> and save to reload.
+        </p>
+      </div>
     );
   }
 }
