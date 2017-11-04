@@ -4,7 +4,9 @@ import ContentPage from '../../../containers/ContentPage';
 export default class Content extends Component{
     render() {
         return(
-            <ContentPage/>
+            <div className="main">
+                <ContentPage/>
+            </div>
         )
     }
 }
