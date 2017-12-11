@@ -1,10 +1,10 @@
 import {createStore, applyMiddleware, compose} from "redux";
 import reducers from "./reducers";
+import { install } from 'redux-loop';
 
-const composeEnhancers = compose;
-
-const middleware = composeEnhancers(
-    applyMiddleware()
+const middleware = compose(
+    applyMiddleware(),
+    install()
 );
 
 const initialState = {};
