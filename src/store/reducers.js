@@ -1,5 +1,6 @@
 import {combineReducers} from "redux";
 import data from './data/reducers';
+import { reducer as formReducer } from 'redux-form';
 
 const appReducers = combineReducers(
     {
@@ -16,7 +17,8 @@ const app = (state, action) => {
 
 const reducers = combineReducers(
     {
-        app
+        app,
+        form: formReducer
     }
 );
 
