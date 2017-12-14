@@ -12,7 +12,7 @@ class About extends Component{
 }
 
 const mapStateToProps = state => ({
-    count: state.app.data.count
+    count: state.reducer.app.data.count
 });
 
 export default connect(mapStateToProps, null)(About)
