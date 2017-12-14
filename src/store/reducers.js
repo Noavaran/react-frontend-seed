@@ -17,9 +17,12 @@ const app = (state, action) => {
 
 const reducers = combineReducers(
     {
-        app,
-        form: formReducer
+        app
     }
 );
 
-export default reducers;
+export default {
+    reducer: reducers,
+    form: formReducer
+
+};
