@@ -1,12 +1,14 @@
 import {combineReducers} from "redux";
-import data from './data/reducers';
 import { reducer as formReducer } from 'redux-form';
 import user from './user/reducers';
+import data from './data/reducers';
+import layout from './layout/reducers';
 
 const appReducers = combineReducers(
     {
         data,
-        user
+        user,
+        layout
     }
 );
 

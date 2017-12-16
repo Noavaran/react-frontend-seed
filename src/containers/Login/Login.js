@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
-import '../../public/css/signin.css';
+import imgBackGround from './img/signin.jpg';
+// import InputMaterial from '../../components/InputMaterial';
 
 const StyledDiv = styled.div`
 
@@ -19,7 +20,6 @@ const StyledDiv = styled.div`
                     visibility: ${props['data-style'].visibility};
                     opacity: ${props['data-style'].opacitySignIn};
                     animation: ${props['data-style'].animation};
-
                 `
             }
         }}
@@ -63,6 +63,154 @@ const StyledDiv = styled.div`
                 `
             }
         }}
+    }
+    
+    .register-container{
+        background: url(${imgBackGround}) no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        height: 100vh;
+        ${props => {
+            if(props['data-direction']) {
+                return `
+                    direction: ${props['data-direction']}
+                `
+            }
+        }}
+    }
+    
+    .register-container > div{
+        background-color: #fff;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        border-radius: 5px;
+        border: 1px solid gray;
+        margin: auto;
+        -webkit-box-shadow: 0 0 14px 0 rgba(0,0,0,.3);
+        box-shadow: 0 0 14px 0 rgba(0,0,0,.3);
+        overflow: hidden;
+        padding: 10px;
+    }
+    
+    a{
+        text-decoration: none;
+    }
+    
+    form{
+        padding: 10px;
+    }
+    form .header{
+        text-align: center;
+        font-size: 20px;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        margin-left: .5rem;
+        margin-right: .5rem;
+    
+    }
+    input[type="text"] , input[type=password]{
+        height: 25px;
+        border-top : 0px;
+        border-left : 0px;
+        border-right : 0px;
+        width: 100%;
+        border-color: #4eb1ff;
+    }
+    input[type="text"] , input[type=password]:focus{
+        outline: none !important;
+    }
+    input[type="text"].error , input[type=password].error{
+        border-color: #a61702;
+    }
+    
+    .form-group{
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+    .form-group>label{
+        display: inline-block;
+        margin-bottom: .5rem;
+        font-weight: bold;
+        font-size:12px
+    }
+    .form-group>small{
+        font-size: 80%;
+        font-weight: 400;
+    }
+    .text-muted{
+        color: #868e96;
+    }
+    .text-error{
+        color: #a61702;
+    }
+    .text-bold{
+        font-weight: bold;
+    }
+    
+    .text-right{
+        text-align: right;
+    }
+    .text-left{
+        text-align: left;
+    }
+    .text-center{
+        text-align: center;
+    }
+    
+    .pull-left{
+        float: left;
+    }
+    
+    .pull-right{
+        float: right;
+    }
+    
+    
+    .btn{
+        display: inline-block;
+        font-weight: 400;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        border: 1px solid transparent;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        cursor: pointer;
+        border-radius: .25rem;
+        transition: background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+    
+    .btn-primary {
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+    
+    
+    @keyframes shake {
+        10%, 90% {
+            transform: translate3d(-1px, 0, 0);
+        }
+    
+        20%, 80% {
+            transform: translate3d(2px, 0, 0);
+        }
+    
+        30%, 50%, 70% {
+            transform: translate3d(-4px, 0, 0);
+        }
+    
+        40%, 60% {
+            transform: translate3d(4px, 0, 0);
+        }
     }
 `;
 
@@ -133,7 +281,7 @@ export default class Login extends Component {
 
     render() {
         return (
-            <StyledDiv data-style={this.state.style}>
+            <StyledDiv data-style={this.state.style} data-direction={this.props.layout.direction}>
                 <div className="register-container">
                     <div className="signin-container">
                         <form>
