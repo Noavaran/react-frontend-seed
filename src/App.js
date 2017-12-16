@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
 import {Header, Content, Footer} from './components/Layout';
+import Login from './containers/Login';
 import styled from 'styled-components';
+import {connect} from 'react-redux';
 // import SocketWatcher from './components/SocketWatcher';
+import {hasIn} from 'ramda';
+import {withRouter} from "react-router-dom";
 
 const StyledDiv = styled.div`
     display: flex;  
@@ -33,16 +37,33 @@ const StyledDiv = styled.div`
 `;
 
 class App extends Component {
+
+    componentWillMount() {
+        if(!hasIn('isLogin', this.props.user) || !this.props.user.isLogin) {
+            this.props.history.push("/login");
+        }
+    }
+
   render() {
-    return (
-      <StyledDiv>
-          <Header className="header"/>
-          <Content className="main"/>
-          <Footer className="footer" />
-          {/*<SocketWatcher />*/}
-      </StyledDiv>
-    );
+      if(!hasIn('isLogin', this.props.user) || !this.props.user.isLogin) {
+          return (
+              <Login/>
+          )
+      } else {
+          return (
+              <StyledDiv>
+                  <Header className="header"/>
+                  <Content className="main"/>
+                  <Footer className="footer" />
+                  {/*<SocketWatcher />*/}
+              </StyledDiv>
+          );
+      }
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+    user: state.reducer.app.user
+});
+
+export default withRouter(connect(mapStateToProps, null)(App));
