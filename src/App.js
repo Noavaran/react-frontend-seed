@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import {Header, Content, Footer} from './components/Layout';
 import styled from 'styled-components';
-import SocketWatcher from './components/SocketWatcher';
+// import SocketWatcher from './components/SocketWatcher';
 
 const StyledDiv = styled.div`
     display: flex;  
@@ -39,7 +39,7 @@ class App extends Component {
           <Header className="header"/>
           <Content className="main"/>
           <Footer className="footer" />
-          <SocketWatcher />
+          {/*<SocketWatcher />*/}
       </StyledDiv>
     );
   }
