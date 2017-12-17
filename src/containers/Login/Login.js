@@ -279,6 +279,8 @@ export default class Login extends Component {
     };
 
     render() {
+        console.log('2222', this.props.layout.direction);
+
         return (
             <StyledDiv data-style={this.state.style} data-direction={this.props.layout.direction}>
                 <div className="register-container">

@@ -6,7 +6,8 @@ import registerServiceWorker from './registerServiceWorker';
 import {BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import { PersistGate } from 'redux-persist/es/integration/react';
-import configureStore from './store/store'
+import configureStore from './store/store';
+import 'normalize.css';
 
 const { persistor, store } = configureStore();
 
