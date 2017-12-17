@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 import imgBackGround from './img/signin.jpg';
-// import InputMaterial from '../../components/InputMaterial';
 
 const StyledDiv = styled.div`
 
