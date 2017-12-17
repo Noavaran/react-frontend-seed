@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 // import SocketWatcher from './components/SocketWatcher';
 import {hasIn} from 'ramda';
 import {withRouter} from "react-router-dom";
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 
 const StyledDiv = styled.div`
     display: flex;  
@@ -46,8 +47,13 @@ class App extends Component {
 
   render() {
       if(!hasIn('isLogin', this.props.user) || !this.props.user.isLogin) {
+          console.log('11111', this.props.layout);
           return (
-              <Login/>
+              <MuiThemeProvider theme={createMuiTheme({
+                  direction: this.props.layout.direction, // Both here and <body dir="rtl">
+              })}>
+                  <Login/>
+              </MuiThemeProvider>
           )
       } else {
           return (
@@ -62,8 +68,11 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-    user: state.reducer.app.user
-});
+const mapStateToProps = state => {
+    return {
+        user: state.reducer.app.user,
+        layout: state.reducer.app.layout
+    }
+};
 
 export default withRouter(connect(mapStateToProps, null)(App));
