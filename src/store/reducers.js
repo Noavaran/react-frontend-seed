@@ -6,9 +6,9 @@ import layout from './layout/reducers';
 
 const appReducers = combineReducers(
     {
+        layout,
         data,
-        user,
-        layout
+        user
     }
 );
 

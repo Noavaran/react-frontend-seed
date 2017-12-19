@@ -10,7 +10,8 @@ export default class Button extends Component {
         disabled: PropTypes.bool,
         raised: PropTypes.bool,
         onClick: PropTypes.func,
-        href: PropTypes.string
+        href: PropTypes.string,
+        type: PropTypes.string
     };
 
     static defaultProps = {
@@ -33,6 +34,7 @@ export default class Button extends Component {
                     disabled={this.props.disabled}
                     onClick={this.handleClick}
                     href={this.props.href}
+                    type={this.props.type}
                     className="ButtonMaterialClass">
                         {this.props.children}
                         {this.props.text}

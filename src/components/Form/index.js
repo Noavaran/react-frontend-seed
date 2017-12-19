@@ -1,2 +1,2 @@
-import ContactForm from './Form';
-export default ContactForm;
+import Form from './Form';
+export default Form;

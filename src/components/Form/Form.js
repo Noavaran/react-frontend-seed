@@ -1,17 +1,23 @@
 import React, {Component} from 'react';
 import {reduxForm } from 'redux-form';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 
-class ContactForm extends Component{
+class Form extends Component{
     render() {
         return (
             <form onSubmit={this.props.handleSubmit}>
                 {this.props.children}
-                <button type="submit">Submit</button>
             </form>
         )
     }
 }
 
-export default reduxForm({
-    form: 'form'
-})(ContactForm)
+const mapStateToProps = (state, ownProps) => ({
+    form: ownProps.name
+});
+
+export default compose(
+    connect(mapStateToProps),
+    reduxForm({})
+)(Form);
