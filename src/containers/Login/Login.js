@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 import imgBackGround from './img/signin.jpg';
 import {Button, Icon} from '../../components/common';
+import {reduxForm } from 'redux-form';
+import Input from '../../components/Input';
+import Form from '../../components/Form';
 
 const StyledDiv = styled.div`
 
@@ -214,7 +217,7 @@ const StyledDiv = styled.div`
     }
 `;
 
-export default class Login extends Component {
+class Login extends Component {
 
     state = {
         style: {}
@@ -279,37 +282,47 @@ export default class Login extends Component {
         });
     };
 
+    submit = data => {
+        // data.preventDefault();
+        console.log('data form', data);
+    };
+
     render() {
         return (
             <StyledDiv data-style={this.state.style} data-direction={this.props.layout.direction}>
                 <div className="register-container">
                     <div className="signin-container">
-                        <form>
-                            <div className="header text-muted text-bold">
-                                ورود
-                            </div>
-                            <div className="form-group">
-                                <label>نام کاربری </label>
-                                <input type="text" className="error" name="firstname" />
-                                    <small  className="form-text text-error">مقدار نمی تواند خالی باشد</small>
-                            </div>
-                            <div className="form-group">
-                                <label>رمز عبور  </label>
-                                <input type="password" name="lastname" />
-                                    <small  className="form-text text-muted">پسورد را وارد کنید  </small>
-                            </div>
-
-                            <div className="form-group">
-                                <a onClick={this.signupFunc}>ثبت نام</a>
-                                <a onClick={this.forgotpasswordFunc} className="pull-left">بازیابی رمز عبور</a>
-                            </div>
-
+                        {/*<form>*/}
+                        <div className="header text-muted text-bold">
+                            ورود
+                        </div>
+                        <Form onSubmit={this.submit} name="formLogin">
+                            <Input label='نام کاربری' type='text' name='firstName' required placeholder='نام' endAdornment endAdornmentType=""/>
                             <div className="form-group text-center">
-                                <Button text="ورود" onClick={this.shakeFunc}>
+                                <Button type="submit" text="ورود" onClick={this.shakeFunc}>
                                     <Icon name='star'/>
                                 </Button>
                             </div>
-                        </form>
+                            {/*<button type="submit">وردو</button>*/}
+                        </Form>
+                            {/*<div className="form-group">*/}
+                                {/*<label>نام کاربری </label>*/}
+                                {/*<input type="text" className="error" name="firstname" />*/}
+                                    {/*<small  className="form-text text-error">مقدار نمی تواند خالی باشد</small>*/}
+                            {/*</div>*/}
+                            {/*<div className="form-group">*/}
+                                {/*<label>رمز عبور  </label>*/}
+                                {/*<input type="password" name="lastname" />*/}
+                                    {/*<small  className="form-text text-muted">پسورد را وارد کنید  </small>*/}
+                            {/*</div>*/}
+
+                            {/*<div className="form-group">*/}
+                                {/*<a onClick={this.signupFunc}>ثبت نام</a>*/}
+                                {/*<a onClick={this.forgotpasswordFunc} className="pull-left">بازیابی رمز عبور</a>*/}
+                            {/*</div>*/}
+
+
+                        {/*</form>*/}
                     </div>
 
                     <div className="signup-container">
@@ -379,3 +392,7 @@ export default class Login extends Component {
         )
     }
 }
+
+export default reduxForm({
+    form: 'loginForm'
+})(Login)
