@@ -8,7 +8,7 @@ export default class IconButtonContainer extends Component{
     static propTypes = {
         name: PropTypes.string,
         title: PropTypes.string,
-        color: PropTypes.oneOf(['accent', 'action', 'contrast', 'disabled', 'primary', 'error']),
+        color: PropTypes.oneOf(['accent', 'action', 'contrast', 'disabled', 'primary']),
         disabled: PropTypes.bool,
         onClick: PropTypes.func
     };

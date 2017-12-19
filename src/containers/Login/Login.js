@@ -288,6 +288,7 @@ class Login extends Component {
     };
 
     render() {
+
         return (
             <StyledDiv data-style={this.state.style} data-direction={this.props.layout.direction}>
                 <div className="register-container">
@@ -297,7 +298,7 @@ class Login extends Component {
                             ورود
                         </div>
                         <Form onSubmit={this.submit} name="formLogin">
-                            <Input label='نام کاربری' type='text' name='firstName' required placeholder='نام' endAdornment endAdornmentType=""/>
+                            <Input label='نام کاربری' type='text' name='firstName' required />
                             <div className="form-group text-center">
                                 <Button type="submit" text="ورود" onClick={this.shakeFunc}>
                                     <Icon name='star'/>
