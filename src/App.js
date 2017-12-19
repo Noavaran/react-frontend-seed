@@ -47,7 +47,6 @@ class App extends Component {
 
   render() {
       if(!hasIn('isLogin', this.props.user) || !this.props.user.isLogin) {
-          console.log('11111', this.props.layout);
           return (
               <MuiThemeProvider theme={createMuiTheme({
                   direction: this.props.layout.direction, // Both here and <body dir="rtl">

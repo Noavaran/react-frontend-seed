@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 import imgBackGround from './img/signin.jpg';
+import {Button, Icon} from '../../components/common';
 
 const StyledDiv = styled.div`
 
@@ -279,8 +280,6 @@ export default class Login extends Component {
     };
 
     render() {
-        console.log('2222', this.props.layout.direction);
-
         return (
             <StyledDiv data-style={this.state.style} data-direction={this.props.layout.direction}>
                 <div className="register-container">
@@ -306,7 +305,9 @@ export default class Login extends Component {
                             </div>
 
                             <div className="form-group text-center">
-                                <input readOnly onClick={() => this.shakeFunc()}  className="btn btn-primary text-center" value="ورود" />
+                                <Button text="ورود" onClick={this.shakeFunc}>
+                                    <Icon name='star'/>
+                                </Button>
                             </div>
                         </form>
                     </div>
