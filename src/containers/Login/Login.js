@@ -225,11 +225,11 @@ class Login extends Component {
 
     componentDidMount() {
         setTimeout(() => {
-            this.signinFunc();
+            this.signInFunc();
         }, 1)
     }
 
-    signupFunc = () => {
+    signUpFunc = () => {
         this.setState({
             style: {
                 sizeTopSignIn: '200%',
@@ -244,7 +244,7 @@ class Login extends Component {
         });
     };
 
-    forgotpasswordFunc = () => {
+    forgotPasswordFunc = () => {
         this.setState({
             style: {
                 sizeTopSignIn: '200%',
@@ -259,7 +259,7 @@ class Login extends Component {
         });
     };
 
-    signinFunc = () => {
+    signInFunc = () => {
         this.setState({
             style: {
                 sizeTopSignIn: 0,
@@ -293,37 +293,20 @@ class Login extends Component {
             <StyledDiv data-style={this.state.style} data-direction={this.props.layout.direction}>
                 <div className="register-container">
                     <div className="signin-container">
-                        {/*<form>*/}
                         <div className="header text-muted text-bold">
                             ورود
                         </div>
                         <Form onSubmit={this.submit} name="formLogin">
-                            <Input label='نام کاربری' type='text' name='firstName' required />
+                            <Input label='نام کاربری' type='text' name='username' required />
+                            <Input label='رمز عبور' type='password' name='password' required style={{marginTop: 10}}/>
                             <div className="form-group text-center">
-                                <Button type="submit" text="ورود" onClick={this.shakeFunc}>
-                                    <Icon name='star'/>
-                                </Button>
+                                <div style={{display: 'inline-flex', marginBottom: 85}}>
+                                    <Button text="ثبت نام" onClick={this.signUpFunc} raised={false} style={{position: 'absolute', right: 3}}/>
+                                    <Button text="بازیابی رمز عبور" onClick={this.forgotPasswordFunc} raised={false} style={{position: 'absolute', left: 3}}/>
+                                </div>
+                                <Button type="submit" text="ورود" onClick={this.shakeFunc} />
                             </div>
-                            {/*<button type="submit">وردو</button>*/}
                         </Form>
-                            {/*<div className="form-group">*/}
-                                {/*<label>نام کاربری </label>*/}
-                                {/*<input type="text" className="error" name="firstname" />*/}
-                                    {/*<small  className="form-text text-error">مقدار نمی تواند خالی باشد</small>*/}
-                            {/*</div>*/}
-                            {/*<div className="form-group">*/}
-                                {/*<label>رمز عبور  </label>*/}
-                                {/*<input type="password" name="lastname" />*/}
-                                    {/*<small  className="form-text text-muted">پسورد را وارد کنید  </small>*/}
-                            {/*</div>*/}
-
-                            {/*<div className="form-group">*/}
-                                {/*<a onClick={this.signupFunc}>ثبت نام</a>*/}
-                                {/*<a onClick={this.forgotpasswordFunc} className="pull-left">بازیابی رمز عبور</a>*/}
-                            {/*</div>*/}
-
-
-                        {/*</form>*/}
                     </div>
 
                     <div className="signup-container">
@@ -357,8 +340,8 @@ class Login extends Component {
                                     <small  className="form-text text-muted">تکرار رمز عبور را وارد کنید  </small>
                             </div>
                             <div className="form-group">
-                                <a onClick={this.signinFunc}>ورود</a>
-                                <a onClick={this.forgotpasswordFunc} className="pull-left">بازیابی رمز عبور</a>
+                                <a onClick={this.signInFunc}>ورود</a>
+                                <a onClick={this.forgotPasswordFunc} className="pull-left">بازیابی رمز عبور</a>
                             </div>
 
                             <div className="form-group text-center">
@@ -379,8 +362,8 @@ class Login extends Component {
                             </div>
 
                             <div className="form-group">
-                                <a onClick={this.signupFunc}>ثبت نام</a>
-                                <a onClick={this.signinFunc} className="pull-left">ورود</a>
+                                <a onClick={this.signUpFunc}>ثبت نام</a>
+                                <a onClick={this.signInFunc} className="pull-left">ورود</a>
                             </div>
 
                             <div className="form-group text-center">

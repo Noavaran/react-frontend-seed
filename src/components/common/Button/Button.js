@@ -11,12 +11,15 @@ export default class Button extends Component {
         raised: PropTypes.bool,
         onClick: PropTypes.func,
         href: PropTypes.string,
-        type: PropTypes.string
+        type: PropTypes.string,
+        style: PropTypes.object,
+        width: PropTypes.number
     };
 
     static defaultProps = {
         color: 'primary',
-        raised: true
+        raised: true,
+        width: '100%'
     };
 
     handleClick = () => {
@@ -27,8 +30,9 @@ export default class Button extends Component {
 
     render() {
         return (
-            <div>
+            <div style={this.props.style}>
                 <ButtonMaterial
+                    style={{width: this.props.width}}
                     raised={this.props.raised}
                     color={this.props.color}
                     disabled={this.props.disabled}
