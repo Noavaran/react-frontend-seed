@@ -1,3 +1,20 @@
+/*
+*
+let beforeAdornment = {
+         type: 'iconButton',
+         name: 'star',
+         color: 'accent',
+         onClick: this.beforeFunc
+     };
+ let afterAdornment = {
+         type: 'iconButton',
+         name: 'star',
+         color: 'accent',
+         onClick: this.afterFunc
+     };
+*
+* */
+
 import React, {Component} from 'react';
 import {Field} from 'redux-form';
 import PropTypes from 'prop-types';
@@ -5,33 +22,6 @@ import {required} from '../../utils/fieldLevelValidationForm';
 import Input, { InputLabel, InputAdornment } from 'material-ui/Input';
 import { FormControl, FormHelperText } from 'material-ui/Form';
 import {Icon, IconButton} from '../common';
-
-
-// startAdornment={<IconButton name="star"/>}
-
-// const renderField = ({
-//     input,
-//     label,
-//     type,
-//     placeholder,
-//     hint,
-//     meta: { touched, error, warning }
-//  }) => (
-//     <div>
-//         <FormControl fullWidth>
-//             <InputLabel className='inputLabelMaterial' style={{left: 'initial'}}>{label}</InputLabel>
-//             <Input className='inputMaterial' endAdornment={<InputAdornment position="end">Kg</InputAdornment>}  />
-//             <FormHelperText style={{textAlign: 'right'}}>{hint}</FormHelperText>
-//         </FormControl>
-//         {/*<label>{label}</label>*/}
-//         {/*<div>*/}
-//             {/*<input {...input} placeholder={placeholder} type={type} />*/}
-//             {/*{touched &&*/}
-//             {/*((error && <span>{error}</span>) ||*/}
-//             {/*(warning && <span>{warning}</span>))}*/}
-//         {/*</div>*/}
-//     </div>
-// );
 
 export default class InputContainer extends Component{
 
@@ -42,12 +32,40 @@ export default class InputContainer extends Component{
         type: PropTypes.string,
         placeholder: PropTypes.string,
         required: PropTypes.bool,
-        startAdornment: PropTypes.bool
-
+        beforeInput: PropTypes.shape({
+            type: PropTypes.oneOf(['text', 'icon', 'iconButton']),
+            name: PropTypes.oneOfType([
+                PropTypes.string,
+                PropTypes.number
+            ]),
+            color: PropTypes.string,
+            onClick: PropTypes.func
+        }),
+        afterInput: PropTypes.shape({
+            type: PropTypes.oneOf(['text', 'icon', 'iconButton']),
+            name: PropTypes.oneOfType([
+                PropTypes.string,
+                PropTypes.number
+            ]),
+            color: PropTypes.string,
+            onClick: PropTypes.func
+        }),
+        disabled: PropTypes.bool,
+        onChange: PropTypes.func,
+        value: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number
+        ])
     };
 
     static defaultProps = {
-        type: 'text'
+        type: 'text',
+        disabled: false,
+        value: ''
+    };
+
+    state = {
+        value: this.props.value
     };
 
     renderHint = () => {
@@ -60,15 +78,50 @@ export default class InputContainer extends Component{
         }
     };
 
-    renderEndAdornment = () => {
-        {/*<InputAdornment position="end">Kg</InputAdornment>*/}
-        {/*<IconButton name="star"/>*/}
-        {/*<Icon />*/}
-        if(this.props.endAdornment) {
-            return (<InputAdornment position="end">Kg</InputAdornment>)
+    renderError = error => {
+        if(error) {
+            return (
+                <FormHelperText style={{textAlign: 'right'}}>{error}</FormHelperText>
+            )
         } else {
             return null
         }
+    };
+
+    handleClickAdornmentIconButton = (adornment) => {
+        if(this.props[adornment].onClick) {
+            this.props[adornment].onClick();
+        }
+    };
+
+    renderAdornment = (adornment) => {
+        if(this.props[adornment]) {
+            if(this.props[adornment].type === 'text') {
+                return (
+                    <InputAdornment>{this.props[adornment].name}</InputAdornment>
+                )
+            } else if(this.props[adornment].type === 'icon') {
+                return (
+                    <Icon name={this.props[adornment].name} color={this.props[adornment].color}/>
+                )
+            } else if(this.props[adornment].type === 'iconButton') {
+                return (
+                    <IconButton name={this.props[adornment].name} color={this.props[adornment].color} onClick={() => this.handleClickAdornmentIconButton(adornment)}/>
+                )
+            } else {
+                return null
+            }
+        } else {
+            return null;
+        }
+    };
+
+    handleChange = e => {
+        this.setState({ value: e.target.value}, () => {
+            if(this.props.onChange) {
+                this.props.onChange();
+            }
+        });
     };
 
     renderField = ({
@@ -79,18 +132,17 @@ export default class InputContainer extends Component{
         }) => {
         return (
             <div>
-                <FormControl fullWidth>
+                <FormControl fullWidth disabled={this.props.disabled} error={touched && error && true}>
                     <InputLabel className='inputLabelMaterial' style={{left: 'initial'}}>{label}</InputLabel>
-                    <Input className='inputMaterial' startAdornment={<IconButton name="star"/>} endAdornment={this.renderEndAdornment()} placeholder={this.props.placeholder} />
+                    <Input className='inputMaterial'
+                           startAdornment={this.renderAdornment('beforeInput')}
+                           endAdornment={this.renderAdornment('afterInput')}
+                           {...input}
+                           value={this.state.value}
+                           placeholder={this.props.placeholder} />
                     {this.renderHint()}
+                    {this.renderError(error)}
                 </FormControl>
-                {/*<label>{label}</label>*/}
-                {/*<div>*/}
-                {/*<input {...input} placeholder={placeholder} type={type} />*/}
-                {/*{touched &&*/}
-                {/*((error && <span>{error}</span>) ||*/}
-                {/*(warning && <span>{warning}</span>))}*/}
-                {/*</div>*/}
             </div>
         )
     };
@@ -109,8 +161,8 @@ export default class InputContainer extends Component{
                     component={this.renderField}
                     type={this.props.type}
                     validate={validation}
-                    label={this.props.label}
-                    />
+                    onChange={this.handleChange}
+                    label={this.props.label}/>
             </div>
         )
     }
