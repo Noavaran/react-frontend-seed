@@ -55,13 +55,15 @@ export default class InputContainer extends Component{
         value: PropTypes.oneOfType([
             PropTypes.string,
             PropTypes.number
-        ])
+        ]),
+        style: PropTypes.object
     };
 
     static defaultProps = {
         type: 'text',
         disabled: false,
-        value: ''
+        value: '',
+        style: {}
     };
 
     state = {
@@ -127,19 +129,20 @@ export default class InputContainer extends Component{
     renderField = ({
         input,
         label,
-        type,
         meta: { touched, error, warning }
         }) => {
         return (
             <div>
-                <FormControl fullWidth disabled={this.props.disabled} error={touched && error && true}>
+                <FormControl fullWidth disabled={this.props.disabled} error={touched && error && true} style={this.props.style}>
                     <InputLabel className='inputLabelMaterial' style={{left: 'initial'}}>{label}</InputLabel>
-                    <Input className='inputMaterial'
-                           startAdornment={this.renderAdornment('beforeInput')}
-                           endAdornment={this.renderAdornment('afterInput')}
-                           {...input}
-                           value={this.state.value}
-                           placeholder={this.props.placeholder} />
+                    <Input
+                        className='inputMaterial'
+                        startAdornment={this.renderAdornment('beforeInput')}
+                        endAdornment={this.renderAdornment('afterInput')}
+                        {...input}
+                        type={this.props.type}
+                        value={this.state.value}
+                        placeholder={this.props.placeholder} />
                     {this.renderHint()}
                     {this.renderError(error)}
                 </FormControl>
