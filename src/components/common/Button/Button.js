@@ -13,7 +13,7 @@ export default class Button extends Component {
         href: PropTypes.string,
         type: PropTypes.string,
         style: PropTypes.object,
-        width: PropTypes.number
+        width: PropTypes.string
     };
 
     static defaultProps = {
