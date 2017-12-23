@@ -68,10 +68,9 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-    // console.log('1111111', state);
     return {
-        user: state.reducer.app.user,
-        layout: state.reducer.app.layout
+        user: state.app.user,
+        layout: state.app.layout
     }
 };
 

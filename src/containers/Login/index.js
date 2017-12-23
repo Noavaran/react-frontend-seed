@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {login} from '../../store/user';
 
 const mapStateToProps = state => ({
-    layout: state.reducer.app.layout
+    layout: state.app.layout
 });
 
 const mapDispatchToProps = dispatch => {
