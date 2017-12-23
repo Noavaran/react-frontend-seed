@@ -5,6 +5,10 @@ import {fetchUser, userFetchFailedAction, userFetchSuccessfulAction} from './';
 const user = (state = {isLogin: false, details: {}, initStarted: false}, action) => {
     switch (action.type) {
         case GET_USER:
+            // return loop(
+            //     {...state, initStarted: true},
+            //     Cmd.action(fetchUser(action.payload)) // <-- let the middleware sort it out
+            // );
             return loop(
                 {...state, initStarted: true},
                 Cmd.run(fetchUser, {
@@ -14,6 +18,7 @@ const user = (state = {isLogin: false, details: {}, initStarted: false}, action)
                 })
             );
         case USER_FETCH_SUCCESSFUL:
+            console.log('lllsflf[wef[lll');
             return state;
 
         case USER_FETCH_FAILED:

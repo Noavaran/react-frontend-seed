@@ -14,6 +14,10 @@ export const login = user => {
 const fetchUser = data => {
     console.log('fetchUser', data);
     return data
+    // return {
+    //     type: USER_FETCH_SUCCESSFUL,
+    //     payload: data
+    // }
 };
 
 const userFetchSuccessfulAction = user => {

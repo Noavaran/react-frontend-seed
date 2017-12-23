@@ -5,7 +5,8 @@ import { persistStore, persistCombineReducers } from 'redux-persist';
 import storage from 'redux-persist/es/storage';
 
 const middleware = compose(
-    applyMiddleware()
+    applyMiddleware(),
+    install()
 );
 
 const initialState = {};
@@ -25,7 +26,7 @@ const config = {
 const reducer = persistCombineReducers(config, reducers);
 
 const configureStore = () => {
-    let store = createStore(reducer, initialState, middleware, install());
+    let store = createStore(reducer, initialState, middleware);
     let persistor = persistStore(store);
     return { persistor, store }
 };
