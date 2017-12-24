@@ -5,6 +5,7 @@ import {Button} from '../../components/common';
 import Input from '../../components/Input';
 import Form from '../../components/Form';
 import {hasIn} from 'ramda';
+import LinearDeterminate from '../../components/LinearDeterminate';
 
 const StyledDiv = styled.div`
 
@@ -287,13 +288,14 @@ export default class Login extends Component {
         // console.log('data form', data);
         if(hasIn('username', data) && hasIn('password', data)) {
             this.props.login(data);
+            this.props.startLinear()
         }
     };
 
     render() {
-
         return (
             <StyledDiv data-style={this.state.style} data-direction={this.props.layout.direction}>
+                <LinearDeterminate />
                 <div className="register-container">
                     <div className="signin-container">
                         <div className="header text-muted text-bold">

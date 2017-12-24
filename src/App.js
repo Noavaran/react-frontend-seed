@@ -1,41 +1,42 @@
 import React, { Component } from 'react';
 import './App.css';
-import {Header, Content, Footer} from './components/Layout';
+// import {Header, Content, Footer} from './components/Layout';
 import Login from './containers/Login';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import {connect} from 'react-redux';
 // import SocketWatcher from './components/SocketWatcher';
 import {hasIn} from 'ramda';
 import {withRouter} from "react-router-dom";
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+import Layout from './components/Layout';
 
-const StyledDiv = styled.div`
-    display: flex;  
-    flex-flow: row wrap;
-    * {
-      padding: 10px;
-      flex: 1 100%;
-    }
-    
-    div.header {
-      background: tomato;
-    }
-    
-    .footer {
-      background: lightgreen;
-    }
-    
-    .main {
-      text-align: left;
-      background: deepskyblue;
-    }
-    
-    @media all and (min-width: 800px) {
-      .main{ flex: 3 0px; }
-      .main{ order: 2; }
-      .footer{ order: 4; }
-    }
-`;
+// const StyledDiv = styled.div`
+//     display: flex;
+//     flex-flow: row wrap;
+//     * {
+//       padding: 10px;
+//       flex: 1 100%;
+//     }
+//
+//     div.header {
+//       background: tomato;
+//     }
+//
+//     .footer {
+//       background: lightgreen;
+//     }
+//
+//     .main {
+//       text-align: left;
+//       background: deepskyblue;
+//     }
+//
+//     @media all and (min-width: 800px) {
+//       .main{ flex: 3 0px; }
+//       .main{ order: 2; }
+//       .footer{ order: 4; }
+//     }
+// `;
 
 class App extends Component {
 
@@ -52,17 +53,28 @@ class App extends Component {
                   direction: this.props.layout.direction, // Both here and <body dir="rtl">
               })}>
                   <Login/>
+                  {/*<SocketWatcher />*/}
               </MuiThemeProvider>
           )
       } else {
+
           return (
-              <StyledDiv>
-                  <Header className="header"/>
-                  <Content className="main"/>
-                  <Footer className="footer" />
+              <MuiThemeProvider theme={createMuiTheme({
+                  direction: this.props.layout.direction, // Both here and <body dir="rtl">
+              })}>
+                  <Layout/>
                   {/*<SocketWatcher />*/}
-              </StyledDiv>
-          );
+              </MuiThemeProvider>
+          )
+
+          // return (
+          //     <StyledDiv>
+          //         <Header className="header"/>
+          //         <Content className="main"/>
+          //         <Footer className="footer" />
+          //         {/*<SocketWatcher />*/}
+          //     </StyledDiv>
+          // );
       }
   }
 }

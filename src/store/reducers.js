@@ -40,12 +40,14 @@ import { reducer as formReducer } from 'redux-form';
 import user from './user/reducers';
 import data from './data/reducers';
 import layout from './layout/reducers';
+import linearDeterminate from './linearDeterminate/reducers';
 
 const appReducers = combineReducers(
     {
         layout,
         data,
-        user
+        user,
+        linearDeterminate
     }
 );
 

@@ -1,7 +1,12 @@
-import Header from './Header';
-import Content from './Content';
-import Footer from './Footer';
+import Layout from './Layout';
+import {connect} from 'react-redux';
+import {endLinear} from '../../store/linearDeterminate';
+import {withRouter} from "react-router-dom";
 
-export {
-    Header, Content, Footer
-}
+const mapDispatchToProps = dispatch => {
+    return {
+        endLinear: () => dispatch(endLinear())
+    }
+};
+
+export default withRouter(connect(null, mapDispatchToProps)(Layout));

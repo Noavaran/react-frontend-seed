@@ -18,9 +18,7 @@ const user = (state = {isLogin: false, details: {}, initStarted: false}, action)
                 })
             );
         case USER_FETCH_SUCCESSFUL:
-            console.log('lllsflf[wef[lll');
-            return state;
-
+            return {...state, isLogin: true, initStarted: false, details: action.payload};
         case USER_FETCH_FAILED:
             return state;
 

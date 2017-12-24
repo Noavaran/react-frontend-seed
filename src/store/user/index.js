@@ -4,7 +4,6 @@ export const
     USER_FETCH_FAILED = 'APP/USER/FETCH/FAILED';
 
 export const login = user => {
-    console.log('user login store', user);
     return {
         type: GET_USER,
         payload: user
@@ -12,19 +11,17 @@ export const login = user => {
 };
 
 const fetchUser = data => {
-    console.log('fetchUser', data);
-    return data
-    // return {
-    //     type: USER_FETCH_SUCCESSFUL,
-    //     payload: data
-    // }
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(data)
+        }, 3000);
+    });
 };
 
 const userFetchSuccessfulAction = user => {
-    console.log('userFetchSuccessfulAction', user);
     return {
         type: USER_FETCH_SUCCESSFUL,
-        user
+        payload: user
     };
 };
 

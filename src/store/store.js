@@ -43,7 +43,9 @@ import {createStore, applyMiddleware, compose} from "redux";
 import reducers from "./reducers";
 import { install } from 'redux-loop';
 
-const middleware = compose(
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const middleware = composeEnhancers(
     applyMiddleware(),
     install()
 );

@@ -1,6 +1,7 @@
 import Login from './Login';
 import {connect} from 'react-redux';
 import {login} from '../../store/user';
+import {startLinear} from '../../store/linearDeterminate';
 
 const mapStateToProps = state => ({
     layout: state.app.layout
@@ -8,7 +9,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
     return {
-        login: user => dispatch(login(user))
+        login: user => dispatch(login(user)),
+        startLinear: () => dispatch(startLinear())
     }
 };
 
