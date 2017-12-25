@@ -2,7 +2,7 @@ import {GET_USER, USER_FETCH_SUCCESSFUL, USER_FETCH_FAILED} from './';
 import { loop, Cmd } from 'redux-loop';
 import {fetchUser, userFetchFailedAction, userFetchSuccessfulAction} from './';
 
-const user = (state = {isLogin: false, details: {}, initStarted: false}, action) => {
+const user = (state = {isLogin: true, details: {}, initStarted: false}, action) => {
     switch (action.type) {
         case GET_USER:
             // return loop(

@@ -8,7 +8,7 @@ import {connect} from 'react-redux';
 import {hasIn} from 'ramda';
 import {withRouter} from "react-router-dom";
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
-import Layout from './components/Layout';
+import Layout from './containers/Layout';
 
 // const StyledDiv = styled.div`
 //     display: flex;

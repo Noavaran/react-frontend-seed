@@ -8,11 +8,21 @@ export default class LinearDeterminateContainer extends Component{
     };
 
     componentDidMount() {
-        this.timer = setInterval(this.progress, 500);
+        if(this.props.start) {
+            this.timer = setInterval(this.progress, 500);
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.start) {
+            this.timer = setInterval(this.progress, 500);
+        }
     }
 
     componentWillUnmount() {
-        clearInterval(this.timer);
+        if(this.timer){
+            clearInterval(this.timer);
+        }
     }
 
     timer = '';
