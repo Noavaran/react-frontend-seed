@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 import imgBackGround from './img/signin.jpg';
-import {Button, Icon} from '../../components/common';
-import {reduxForm } from 'redux-form';
+import {Button} from '../../components/common';
 import Input from '../../components/Input';
 import Form from '../../components/Form';
+import {hasIn} from 'ramda';
+import LinearDeterminate from '../../components/LinearDeterminate';
 
 const StyledDiv = styled.div`
 
@@ -217,7 +218,7 @@ const StyledDiv = styled.div`
     }
 `;
 
-class Login extends Component {
+export default class Login extends Component {
 
     state = {
         style: {}
@@ -284,13 +285,17 @@ class Login extends Component {
 
     submit = data => {
         // data.preventDefault();
-        console.log('data form', data);
+        // console.log('data form', data);
+        if(hasIn('username', data) && hasIn('password', data)) {
+            this.props.login(data);
+            this.props.startLinear()
+        }
     };
 
     render() {
-
         return (
             <StyledDiv data-style={this.state.style} data-direction={this.props.layout.direction}>
+                <LinearDeterminate />
                 <div className="register-container">
                     <div className="signin-container">
                         <div className="header text-muted text-bold">
@@ -376,7 +381,3 @@ class Login extends Component {
         )
     }
 }
-
-export default reduxForm({
-    form: 'loginForm'
-})(Login)
