@@ -1,2 +1,4 @@
 import Menu from './Menu';
-export default Menu;
+import {withRouter} from 'react-router-dom';
+
+export default withRouter(Menu);

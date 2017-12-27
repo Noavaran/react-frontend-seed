@@ -1,18 +1,9 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
 
-class About extends Component{
+export default class About extends Component{
     render() {
         return(
-            <div>About
-                <b>Redux Count = {this.props.count}</b>
-            </div>
+            <div>About</div>
         )
     }
 }
-
-const mapStateToProps = state => ({
-    count: state.reducer.app.data.count
-});
-
-export default connect(mapStateToProps, null)(About)
