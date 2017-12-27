@@ -7,7 +7,7 @@ import { withStyles } from 'material-ui/styles';
 import classNames from 'classnames';
 import AccountCircle from 'material-ui-icons/AccountCircle';
 import Menu, { MenuItem } from 'material-ui/Menu';
-
+import {Icon} from '../../components/common';
 const drawerWidth = 240;
 
 const styles = theme => ({
@@ -63,8 +63,12 @@ class Header extends Component{
         this.setState({ anchorEl: event.currentTarget });
     };
 
-    handleClose = () => {
-        this.setState({ anchorEl: null });
+    handleClose = flag => {
+        this.setState({ anchorEl: null }, () => {
+            if(flag === 'exit') {
+                this.props.logout();
+            }
+        });
     };
 
     render() {
@@ -94,8 +98,8 @@ class Header extends Component{
                                 anchorEl={this.state.anchorEl}
                                 open={open}
                                 onClose={this.handleClose}>
-                                <MenuItem onClick={this.handleClose}>پروفایل</MenuItem>
-                                <MenuItem onClick={this.handleClose}>خروج</MenuItem>
+                                <MenuItem onClick={this.handleClose}> پروفایل <Icon name="person" /></MenuItem>
+                                <MenuItem onClick={() => this.handleClose('exit')}> خروج <Icon name="exit_to_app" /></MenuItem>
                             </Menu>
                         </div>
                     </Toolbar>

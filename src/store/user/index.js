@@ -1,7 +1,8 @@
 export const
     GET_USER = 'APP/USER/GET/USER',
     USER_FETCH_SUCCESSFUL = 'APP/USER/FETCH/SUCCESSFUL',
-    USER_FETCH_FAILED = 'APP/USER/FETCH/FAILED';
+    USER_FETCH_FAILED = 'APP/USER/FETCH/FAILED',
+    USER_LOGOUT = 'APP/USER/LOGOUT';
 
 export const login = user => {
     return {
@@ -10,10 +11,20 @@ export const login = user => {
     }
 };
 
+export const logout = () => {
+    return {
+        type: USER_LOGOUT
+    }
+};
+
 const fetchUser = data => {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve(data)
+            if(data.password === '1') {
+                resolve(data)
+            } else {
+                reject();
+            }
         }, 1000);
     });
 };

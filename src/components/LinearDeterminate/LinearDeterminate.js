@@ -16,6 +16,12 @@ export default class LinearDeterminateContainer extends Component{
     componentWillReceiveProps(nextProps) {
         if(nextProps.start) {
             this.timer = setInterval(this.progress, 500);
+        } else {
+            this.setState({completed: 0}, () => {
+                if(this.timer){
+                    clearInterval(this.timer);
+                }
+            });
         }
     }
 

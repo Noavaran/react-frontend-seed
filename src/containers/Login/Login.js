@@ -4,7 +4,7 @@ import imgBackGround from './img/signin.jpg';
 import {Button} from '../../components/common';
 import Input from '../../components/Input';
 import Form from '../../components/Form';
-import {hasIn} from 'ramda';
+import {hasIn, isEmpty} from 'ramda';
 import LinearDeterminate from '../../components/LinearDeterminate';
 
 const StyledDiv = styled.div`
@@ -221,13 +221,27 @@ const StyledDiv = styled.div`
 export default class Login extends Component {
 
     state = {
-        style: {}
+        style: {},
+        loginError: ''
     };
 
     componentDidMount() {
         setTimeout(() => {
             this.signInFunc();
         }, 1)
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if(hasIn('error', nextProps.user) && !isEmpty(nextProps.user.error)) {
+            this.shakeFunc();
+        }
+    }
+
+    componentWillUnmount(){
+        if (this.timeout) {
+            clearTimeout(this.timeout);
+            this.timeout = null
+        }
     }
 
     signUpFunc = () => {
@@ -275,9 +289,11 @@ export default class Login extends Component {
         });
     };
 
+    timeout = null;
+
     shakeFunc = () => {
         this.setState({style: {...this.state.style, animation: 'shake 1s cubic-bezier(.36,.07,.19,.97) both'}}, () => {
-            setTimeout(() => {
+            this.timeout = setTimeout(() => {
                 this.setState({style: {...this.state.style, animation: ''}});
             }, 1000);
         });
@@ -309,7 +325,7 @@ export default class Login extends Component {
                                     <Button text="ثبت نام" onClick={this.signUpFunc} raised={false} style={{position: 'absolute', right: 3}}/>
                                     <Button text="بازیابی رمز عبور" onClick={this.forgotPasswordFunc} raised={false} style={{position: 'absolute', left: 3}}/>
                                 </div>
-                                <Button type="submit" text="ورود" onClick={this.shakeFunc} />
+                                <Button type="submit" text="ورود"/>
                             </div>
                         </Form>
                     </div>
