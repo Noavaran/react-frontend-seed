@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
-import Typography from 'material-ui/Typography';
 import MenuIcon from 'material-ui-icons/Menu';
 import IconButton from 'material-ui/IconButton';
 import { withStyles } from 'material-ui/styles';
 import classNames from 'classnames';
+import AccountCircle from 'material-ui-icons/AccountCircle';
+import Menu, { MenuItem } from 'material-ui/Menu';
 
 const drawerWidth = 240;
 
@@ -40,7 +41,8 @@ const styles = theme => ({
 class Header extends Component{
 
     state = {
-        open: this.props.open
+        open: this.props.open,
+        anchorEl: null,
     };
 
     componentWillReceiveProps(nextProps) {
@@ -57,23 +59,48 @@ class Header extends Component{
         });
     };
 
+    handleMenu = event => {
+        this.setState({ anchorEl: event.currentTarget });
+    };
+
+    handleClose = () => {
+        this.setState({ anchorEl: null });
+    };
+
     render() {
         const { classes } = this.props;
+        const open = Boolean(this.state.anchorEl);
         return (
-            <AppBar className={classNames(classes.appBar, this.state.open && classes.appBarShift)}>
-                <Toolbar disableGutters={!this.state.open}>
-                    <IconButton
-                        color="contrast"
-                        aria-label="open drawer"
-                        onClick={this.handleDrawerOpen}
-                        className={classNames(classes.menuButton, this.state.open && classes.hide)}>
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography type="title" color="inherit" noWrap>
-                        منو
-                    </Typography>
-                </Toolbar>
-            </AppBar>
+            <div>
+                <AppBar className={classNames(classes.appBar, this.state.open && classes.appBarShift)}>
+                    <Toolbar disableGutters={!this.state.open}>
+                        <IconButton
+                            color="contrast"
+                            aria-label="open drawer"
+                            onClick={this.handleDrawerOpen}
+                            className={classNames(classes.menuButton, this.state.open && classes.hide)}>
+                            <MenuIcon />
+                        </IconButton>
+                        <div style={{position: 'absolute', left: 0}}>
+                            <IconButton
+                                aria-owns={open ? 'menu-appbar' : null}
+                                aria-haspopup="true"
+                                onClick={this.handleMenu}
+                                color="contrast">
+                                <AccountCircle />
+                            </IconButton>
+                            <Menu
+                                id="menu-appbar"
+                                anchorEl={this.state.anchorEl}
+                                open={open}
+                                onClose={this.handleClose}>
+                                <MenuItem onClick={this.handleClose}>پروفایل</MenuItem>
+                                <MenuItem onClick={this.handleClose}>خروج</MenuItem>
+                            </Menu>
+                        </div>
+                    </Toolbar>
+                </AppBar>
+            </div>
         )
     }
 }

@@ -2,22 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8ff6a69-b140-4151-bf5a-19a83ee2ff33" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/Layout1/Content/Content.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/Layout1/Content/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/Layout1/Footer/Footer.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/Layout1/Footer/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/Layout1/Header/Header.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/Layout1/Header/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/Layout1/index.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/containers/About/About.js" afterPath="$PROJECT_DIR$/src/containers/About/About.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/containers/Content/Content.js" afterPath="$PROJECT_DIR$/src/containers/Content/Content.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/containers/Footer/Footer.js" afterPath="$PROJECT_DIR$/src/containers/Footer/Footer.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/containers/Header/Header.js" afterPath="$PROJECT_DIR$/src/containers/Header/Header.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/containers/Home/Home.js" afterPath="$PROJECT_DIR$/src/containers/Home/Home.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/containers/Layout/Layout.js" afterPath="$PROJECT_DIR$/src/containers/Layout/Layout.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/containers/Menu/Menu.js" afterPath="$PROJECT_DIR$/src/containers/Menu/Menu.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/containers/Menu/index.js" afterPath="$PROJECT_DIR$/src/containers/Menu/index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -32,13 +17,16 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Layout.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/containers/Layout/Layout.js">
+      <file leaf-file-name="Header.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/containers/Header/Header.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="90" column="22" lean-forward="true" selection-start-line="90" selection-start-column="22" selection-end-line="90" selection-end-column="22" />
+            <state relative-caret-position="528">
+              <caret line="97" column="54" lean-forward="false" selection-start-line="97" selection-start-column="54" selection-end-line="97" selection-end-column="54" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
+                <element signature="e#470#1265#0" expanded="false" />
+                <element signature="n#!!block;n#componentWillReceiveProps#0;n#Header#0" expanded="false" />
+                <element signature="e#1568#1735#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -55,10 +43,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>login</find>
-      <find>conso</find>
-      <find>main</find>
-      <find>mailFolderListItems</find>
       <find>List</find>
       <find>60</find>
       <find>footerClassName</find>
@@ -85,6 +69,10 @@
       <find>drawerHeader</find>
       <find>IconButton</find>
       <find>content</find>
+      <find>handleClose</find>
+      <find>menu-appbar</find>
+      <find>&lt;Icon</find>
+      <find>AccountCircle</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -142,8 +130,8 @@
         <option value="$PROJECT_DIR$/src/containers/About/About.js" />
         <option value="$PROJECT_DIR$/src/containers/Home/Home.js" />
         <option value="$PROJECT_DIR$/src/containers/Footer/Footer.js" />
-        <option value="$PROJECT_DIR$/src/containers/Header/Header.js" />
         <option value="$PROJECT_DIR$/src/containers/Layout/Layout.js" />
+        <option value="$PROJECT_DIR$/src/containers/Header/Header.js" />
       </list>
     </option>
   </component>
@@ -394,12 +382,12 @@
       <workItem from="1513436608976" duration="54189000" />
       <workItem from="1514146478449" duration="8209000" />
       <workItem from="1514367213913" duration="49000" />
-      <workItem from="1514367283106" duration="7941000" />
+      <workItem from="1514367283106" duration="10399000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98589000" />
+    <option name="totallyTimeSpent" value="101047000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1914" height="1053" extended-state="0" />
@@ -414,7 +402,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3078579" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30711207" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -784,22 +772,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Header/Header.js">
+    <entry file="file://$PROJECT_DIR$/src/containers/Layout/Layout.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="864">
-          <caret line="36" column="5" lean-forward="false" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+        <state relative-caret-position="684">
+          <caret line="124" column="34" lean-forward="true" selection-start-line="124" selection-start-column="34" selection-end-line="124" selection-end-column="34" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Layout/Layout.js">
+    <entry file="file://$PROJECT_DIR$/src/containers/Header/Header.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="90" column="22" lean-forward="true" selection-start-line="90" selection-start-column="22" selection-end-line="90" selection-end-column="22" />
+        <state relative-caret-position="528">
+          <caret line="97" column="54" lean-forward="false" selection-start-line="97" selection-start-column="54" selection-end-line="97" selection-end-column="54" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#470#1265#0" expanded="false" />
+            <element signature="n#!!block;n#componentWillReceiveProps#0;n#Header#0" expanded="false" />
+            <element signature="e#1568#1735#0" expanded="false" />
           </folding>
         </state>
       </provider>
