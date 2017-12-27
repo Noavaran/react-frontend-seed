@@ -4,7 +4,8 @@ import {login} from '../../store/user';
 import {startLinear} from '../../store/linearDeterminate';
 
 const mapStateToProps = state => ({
-    layout: state.app.layout
+    layout: state.app.layout,
+    user: state.app.user
 });
 
 const mapDispatchToProps = dispatch => {
