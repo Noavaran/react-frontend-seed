@@ -41,13 +41,15 @@ import user from './user/reducers';
 import data from './data/reducers';
 import layout from './layout/reducers';
 import linearDeterminate from './linearDeterminate/reducers';
+import snackBars from './snackbars/reducers';
 
 const appReducers = combineReducers(
     {
         layout,
         data,
         user,
-        linearDeterminate
+        linearDeterminate,
+        snackBars
     }
 );
 

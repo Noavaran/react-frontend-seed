@@ -81,7 +81,7 @@ export default class InputContainer extends Component{
     };
 
     renderError = error => {
-        if(error) {
+        if(error && this.state.changed) {
             return (
                 <FormHelperText style={{textAlign: 'right'}}>{error}</FormHelperText>
             )
@@ -119,7 +119,7 @@ export default class InputContainer extends Component{
     };
 
     handleChange = e => {
-        this.setState({ value: e.target.value}, () => {
+        this.setState({ value: e.target.value, changed: true}, () => {
             if(this.props.onChange) {
                 this.props.onChange();
             }
@@ -133,7 +133,7 @@ export default class InputContainer extends Component{
         }) => {
         return (
             <div>
-                <FormControl fullWidth disabled={this.props.disabled} error={touched && error && true} style={this.props.style}>
+                <FormControl fullWidth disabled={this.props.disabled} error={ this.state.changed && error && true} style={this.props.style}>
                     <InputLabel className='inputLabelMaterial' style={{left: 'initial'}}>{label}</InputLabel>
                     <Input
                         className='inputMaterial'

@@ -1,42 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
-// import {Header, Content, Footer} from './components/Layout';
 import Login from './containers/Login';
-// import styled from 'styled-components';
 import {connect} from 'react-redux';
 // import SocketWatcher from './components/SocketWatcher';
-import {hasIn} from 'ramda';
+import {hasIn, isEmpty} from 'ramda';
 import {withRouter} from "react-router-dom";
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import Layout from './containers/Layout';
-
-// const StyledDiv = styled.div`
-//     display: flex;
-//     flex-flow: row wrap;
-//     * {
-//       padding: 10px;
-//       flex: 1 100%;
-//     }
-//
-//     div.header {
-//       background: tomato;
-//     }
-//
-//     .footer {
-//       background: lightgreen;
-//     }
-//
-//     .main {
-//       text-align: left;
-//       background: deepskyblue;
-//     }
-//
-//     @media all and (min-width: 800px) {
-//       .main{ flex: 3 0px; }
-//       .main{ order: 2; }
-//       .footer{ order: 4; }
-//     }
-// `;
+import SnackBars from './components/SnackBars';
+import {showSnackBars} from './store/snackbars';
 
 class App extends Component {
 
@@ -46,35 +18,33 @@ class App extends Component {
         }
     }
 
+    componentWillReceiveProps(nextProps) {
+        if(hasIn('error', nextProps.user) && !isEmpty(nextProps.user.error)) {
+            this.props.showSnackBars(nextProps.user.error)
+        }
+    }
+
   render() {
       if(!hasIn('isLogin', this.props.user) || !this.props.user.isLogin) {
           return (
               <MuiThemeProvider theme={createMuiTheme({
                   direction: this.props.layout.direction, // Both here and <body dir="rtl">
               })}>
+                  <SnackBars />
                   <Login/>
                   {/*<SocketWatcher />*/}
               </MuiThemeProvider>
           )
       } else {
-
           return (
               <MuiThemeProvider theme={createMuiTheme({
                   direction: this.props.layout.direction, // Both here and <body dir="rtl">
               })}>
+                  <SnackBars />
                   <Layout/>
                   {/*<SocketWatcher />*/}
               </MuiThemeProvider>
           )
-
-          // return (
-          //     <StyledDiv>
-          //         <Header className="header"/>
-          //         <Content className="main"/>
-          //         <Footer className="footer" />
-          //         {/*<SocketWatcher />*/}
-          //     </StyledDiv>
-          // );
       }
   }
 }
@@ -86,4 +56,10 @@ const mapStateToProps = state => {
     }
 };
 
-export default withRouter(connect(mapStateToProps, null)(App));
+const mapDispatchToProps = dispatch => {
+    return {
+        showSnackBars: message => dispatch(showSnackBars(message))
+    }
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
