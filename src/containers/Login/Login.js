@@ -6,6 +6,12 @@ import Input from '../../components/Input';
 import Form from '../../components/Form';
 import {hasIn, isEmpty} from 'ramda';
 import LinearDeterminate from '../../components/LinearDeterminate';
+import telegramPic from './img/telegram.png';
+import instagramPic from './img/instagram.png';
+import aparatPic from './img/aparat.png';
+import emailPic from './img/email.png';
+import chakilehFooterPic from './img/chakileh-footer.png';
+import Avatar from '../../components/Avatar';
 
 const StyledDiv = styled.div`
     
@@ -13,14 +19,14 @@ const StyledDiv = styled.div`
         visibility: hidden;
         opacity: 0;
         width: 300px;
-        height: 350px;
-        top: 200%;
-        left: 0;
-        transition: top 1s ease-in-out, opacity  1s linear;
+        height: 295px;
+        left: 100%;
+        top: 0;
+        transition: left 1s ease-in-out, opacity  1s linear;
         ${props => {
-            if(props['data-style']) {
+    if(props['data-style']) {
                 return `
-                    top: ${props['data-style'].sizeTopSignIn};
+                    left: ${props['data-style'].sizeTopSignIn};
                     visibility: ${props['data-style'].visibility};
                     opacity: ${props['data-style'].opacitySignIn};
                     animation: ${props['data-style'].animation};
@@ -32,9 +38,9 @@ const StyledDiv = styled.div`
         visibility: hidden;
         opacity: 0;
         width: 300px;
-        height: 250px;
-        left: -200%;
-        top:0;
+        height: 216px;
+         left: 100%;
+        top: 0;
         transition: left 1s ease-in-out, opacity  1s linear;
         ${props => {
             if(props['data-style']) {
@@ -79,7 +85,7 @@ const StyledDiv = styled.div`
         text-align: center;
         font-size: 20px;
         margin-bottom: 1rem;
-        margin-top: 1rem;
+        margin-top: 0px;
         margin-left: .5rem;
         margin-right: .5rem;
     
@@ -124,6 +130,44 @@ const StyledDiv = styled.div`
             transform: translate3d(4px, 0, 0);
         }
     }
+    div.about-chakideh{
+        position: absolute;
+        width: 21%;
+        text-align: justify;
+        font-size: 10px;
+        direction: rtl;
+        // height: 300px;
+        top: 100px;
+        bottom: 0;
+        margin: auto;
+        left: 10%;
+        font-family: BKoodakBold,Arial,Helvetica,sans-serif !important;
+    }
+    
+    .avatarClassHeader{
+        width: 150px;
+        height: 67px;
+    }
+    
+    .footerLoginPage{
+        position: absolute;
+        bottom: 0px;
+        background-color: #f8f7f7;
+        width: 100%;
+        height: 45px;
+        opacity: 0.5;
+    }
+    
+    .subFooterLoginPage{
+        text-align: center;
+        margin-top: 12px;
+        font-family: BKoodakBold,Arial,Helvetica,sans-serif !important;
+    }
+    
+    div.inputMaterial input{
+        direction: initial;
+    }
+    
 `;
 
 export default class Login extends Component {
@@ -157,7 +201,7 @@ export default class Login extends Component {
             style: {
                 sizeTopSignIn: '200%',
                 sizeTopSignUp: '-200%',
-                sizeLeftForgotPass: 0,
+                sizeLeftForgotPass: '60%',
                 visibility: 'visible',
                 opacitySignIn: 0,
                 opacitySignUp: 0,
@@ -170,9 +214,9 @@ export default class Login extends Component {
     signInFunc = () => {
         this.setState({
             style: {
-                sizeTopSignIn: 0,
+                sizeTopSignIn: '60%',
                 sizeTopSignUp: '-200%',
-                sizeLeftForgotPass: '-200%',
+                sizeLeftForgotPass: '100%',
                 visibility: 'visible',
                 opacitySignIn: .9,
                 opacitySignUp: 0,
@@ -207,19 +251,33 @@ export default class Login extends Component {
         return (
             <StyledDiv data-style={this.state.style} data-direction={this.props.layout.direction}>
                 <LinearDeterminate />
+                <div className="about-chakideh">
+                    <img src={chakilehFooterPic} style={{width: '100%'}} alt=""/>
+                    <h1>چکیده استارت آپی فرهنگی و اجتماعی است.</h1>
+                    <h1>جامعه مجازی متشکل از ناشران, نویسندگان, متخصصان و علاقمندان کتاب است.</h1>
+                    <h1>هدف آن آشنایی و گفتگو پیرامون کتاب, امکان خرید کتاب فیزیکی و الکترونیکی, خلاصه کتاب به فرمت های متنی, صوتی و ویدیویی می باشد.</h1>
+                    <h1>خلاصه کتاب ها در فاصله ای بین ۱۰ تا ۶۰ دقیقه به شیوه های جذاب کل مفاهیم اصلی یک کتاب را به مخاطب انتقال می دهند.</h1>
+                    <h1>کسب و ارتقا دانش, ارتقا مهارت های فردی و تخصصی در کمترین زمان برای افراد, سازمان ها و کسب و کارها از اهداف اصلی می باشد.</h1>
+                    <div style={{display: 'inline-flex'}}>
+                        <Avatar pic={telegramPic} alt={this.props.translate.telegram} style={{marginLeft: 40, marginRight: 10, cursor: 'pointer'}} />
+                        <Avatar pic={instagramPic} alt={this.props.translate.instagram} style={{marginLeft: 40, cursor: 'pointer'}}/>
+                        <Avatar pic={aparatPic} alt={this.props.translate.aparat} style={{marginLeft: 40, cursor: 'pointer'}}/>
+                        <Avatar pic={emailPic} alt={this.props.translate.email} style={{cursor: 'pointer'}}/>
+                    </div>
+                </div>
                 <div className="register-container">
                     <div className="signin-container">
                         <div className="header text-muted text-bold text-center">
                             {this.props.translate.entry}
                         </div>
                         <Form onSubmit={this.submit} name="formLogin">
-                            <Input label={this.props.translate.username} type='text' name='username' required style={{direction: 'initial'}}/>
-                            <Input label={this.props.translate.password} type='password' name='password' required style={{marginTop: 10, direction: 'initial'}}/>
-                            <div className="form-group text-center">
-                                <div style={{display: 'inline-flex', marginBottom: 70}}>
-                                    <Button text={this.props.translate['forgot.password']} onClick={this.forgotPasswordFunc} raised={false} style={{position: 'absolute', right: 3}}/>
-                                </div>
+                            <Input label={this.props.translate.username} type='text' name='username' required/>
+                            <Input label={this.props.translate.password} type='password' name='password' required style={{marginTop: 10}}/>
+                            <div className="form-group text-center" style={{marginTop: 20}}>
                                 <Button type="submit" text={this.props.translate.entry}/>
+                            </div>
+                            <div>
+                                <Button text={this.props.translate['forgot.password']} onClick={this.forgotPasswordFunc} raised={false} style={{position: 'absolute', left: 3}}/>
                             </div>
                         </Form>
                     </div>
@@ -228,16 +286,21 @@ export default class Login extends Component {
                         <div className="header text-muted text-bold text-center">
                             {this.props.translate['forgot.password']}
                         </div>
-
                         <Form onSubmit={this.submitFormForgotPass} name="formForgotPass">
-                            <Input label={this.props.translate.email} type='text' name='username' required style={{direction: 'initial'}}/>
-                            <div className="form-group text-center">
-                                <div style={{display: 'inline-flex', marginBottom: 70}}>
-                                    <Button text={this.props.translate.entry} onClick={this.signInFunc} raised={false} style={{position: 'absolute', right: 3}}/>
-                                </div>
+                            <Input label={this.props.translate.email} type='text' name='email' required email/>
+                            <div className="form-group text-center" style={{marginTop: 20}}>
                                 <Button type="submit" text={this.props.translate.send}/>
                             </div>
+                            <div>
+                                <Button text={this.props.translate['back.to.login']} onClick={this.signInFunc} raised={false} style={{position: 'absolute', left: 3}}/>
+                            </div>
                         </Form>
+                    </div>
+                </div>
+                <div className="footerLoginPage">
+                    <div className="subFooterLoginPage">
+                            کلیه مطالب موجود در پروژه چکیده دارای حق کپی رایت بوده و به هیچ وجه حق پخش و نشر برای دیگران مجاز نمی باشد و پیگرد قانونی دارد
+
                     </div>
                 </div>
             </StyledDiv>
