@@ -210,32 +210,32 @@ export default class Login extends Component {
                 <div className="register-container">
                     <div className="signin-container">
                         <div className="header text-muted text-bold text-center">
-                            ورود
+                            {this.props.translate.entry}
                         </div>
                         <Form onSubmit={this.submit} name="formLogin">
-                            <Input label='نام کاربری' type='text' name='username' required />
-                            <Input label='رمز عبور' type='password' name='password' required style={{marginTop: 10}}/>
+                            <Input label={this.props.translate.username} type='text' name='username' required style={{direction: 'initial'}}/>
+                            <Input label={this.props.translate.password} type='password' name='password' required style={{marginTop: 10, direction: 'initial'}}/>
                             <div className="form-group text-center">
                                 <div style={{display: 'inline-flex', marginBottom: 70}}>
-                                    <Button text="بازیابی رمز عبور" onClick={this.forgotPasswordFunc} raised={false} style={{position: 'absolute', right: 3}}/>
+                                    <Button text={this.props.translate['forgot.password']} onClick={this.forgotPasswordFunc} raised={false} style={{position: 'absolute', right: 3}}/>
                                 </div>
-                                <Button type="submit" text="ورود"/>
+                                <Button type="submit" text={this.props.translate.entry}/>
                             </div>
                         </Form>
                     </div>
 
                     <div className="forgotpassword-container">
                         <div className="header text-muted text-bold text-center">
-                            بازیابی رمز عبور
+                            {this.props.translate['forgot.password']}
                         </div>
 
                         <Form onSubmit={this.submitFormForgotPass} name="formForgotPass">
-                            <Input label='نام کاربری' type='text' name='username' required />
+                            <Input label={this.props.translate.email} type='text' name='username' required style={{direction: 'initial'}}/>
                             <div className="form-group text-center">
                                 <div style={{display: 'inline-flex', marginBottom: 70}}>
-                                    <Button text="ورود" onClick={this.signInFunc} raised={false} style={{position: 'absolute', right: 3}}/>
+                                    <Button text={this.props.translate.entry} onClick={this.signInFunc} raised={false} style={{position: 'absolute', right: 3}}/>
                                 </div>
-                                <Button type="submit" text="ارسال"/>
+                                <Button type="submit" text={this.props.translate.send}/>
                             </div>
                         </Form>
                     </div>
