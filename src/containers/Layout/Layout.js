@@ -99,10 +99,10 @@ class Layout extends Component {
     render() {
         const { classes, theme } = this.props;
         return (
-            <div className={classes.root}>
-                <StyledDiv>
+            <StyledDiv className={classes.root}>
+                <div>
                     <Footer open={this.state.open}/>
-                </StyledDiv>
+                </div>
                 <div className={classes.appFrame}>
                     <Header open={this.state.open} isOpen={this.handleIsOpen}/>
                     <Drawer
@@ -125,7 +125,7 @@ class Layout extends Component {
                         <Content/>
                     </main>
                 </div>
-            </div>
+            </StyledDiv>
         );
     }
 }

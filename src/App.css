@@ -4,22 +4,3 @@
     url('public/fonts/BKoodakBold.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
     url('public/fonts/BKoodakBold.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
 }
-body {
-    font-family: BKoodakBold, Arial, Helvetica, sans-serif !important;
-}
-
-.MuiButton-root-106{
-    font-family: BKoodakBold, Arial, Helvetica, sans-serif !important;
-}
-
-.MuiFormLabel-root-68{
-    font-family: BKoodakBold, Arial, Helvetica, sans-serif !important;
-}
-
-.MuiTypography-subheading-431{
-    font-family: BKoodakBold, Arial, Helvetica, sans-serif !important;
-}
-
-.MuiMenuItem-root-579{
-    font-family: BKoodakBold, Arial, Helvetica, sans-serif !important;
-}

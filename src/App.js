@@ -29,6 +29,9 @@ class App extends Component {
           return (
               <MuiThemeProvider theme={createMuiTheme({
                   direction: this.props.layout.direction, // Both here and <body dir="rtl">
+                  typography: {
+                      fontFamily: 'BKoodakBold, Arial, Helvetica, sans-serif'
+                  }
               })}>
                   <SnackBars />
                   <Login/>
@@ -39,6 +42,9 @@ class App extends Component {
           return (
               <MuiThemeProvider theme={createMuiTheme({
                   direction: this.props.layout.direction, // Both here and <body dir="rtl">
+                  typography: {
+                      fontFamily: 'BKoodakBold, Arial, Helvetica, sans-serif'
+                  }
               })}>
                   <SnackBars />
                   <Layout/>

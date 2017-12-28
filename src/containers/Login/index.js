@@ -5,7 +5,8 @@ import {startLinear} from '../../store/linearDeterminate';
 
 const mapStateToProps = state => ({
     layout: state.app.layout,
-    user: state.app.user
+    user: state.app.user,
+    translate: state.app.layout.data
 });
 
 const mapDispatchToProps = dispatch => {
