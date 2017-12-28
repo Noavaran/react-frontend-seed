@@ -18,7 +18,7 @@ let beforeAdornment = {
 import React, {Component} from 'react';
 import {Field} from 'redux-form';
 import PropTypes from 'prop-types';
-import {required} from '../../utils/fieldLevelValidationForm';
+import {required, email} from '../../utils/fieldLevelValidationForm';
 import Input, { InputLabel, InputAdornment } from 'material-ui/Input';
 import { FormControl, FormHelperText } from 'material-ui/Form';
 import {Icon, IconButton} from '../common';
@@ -32,6 +32,7 @@ export default class InputContainer extends Component{
         type: PropTypes.string,
         placeholder: PropTypes.string,
         required: PropTypes.bool,
+        email: PropTypes.bool,
         beforeInput: PropTypes.shape({
             type: PropTypes.oneOf(['text', 'icon', 'iconButton']),
             name: PropTypes.oneOfType([
@@ -152,7 +153,8 @@ export default class InputContainer extends Component{
 
     render() {
         let validation = [
-            this.props.required ? required : undefined
+            this.props.required ? required : undefined,
+            this.props.email ? email : undefined
         ];
         validation = validation.filter(item => {
             return typeof item !== 'undefined'

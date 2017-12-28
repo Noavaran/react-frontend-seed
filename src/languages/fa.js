@@ -5,7 +5,11 @@ const lang = {
     "login.text": "ورود",
     "email": "پست الکترونیک",
     "entry": "ورود",
-    "send": "ارسال"
+    "send": "ارسال",
+    "telegram": "تلگرام",
+    "instagram": "اینستاگرام",
+    "aparat": "آپارات",
+    "back.to.login": "بازگشت به صفحه ورود"
 };
 
 export default lang
