@@ -8,7 +8,7 @@ import {hasIn, isEmpty} from 'ramda';
 import LinearDeterminate from '../../components/LinearDeterminate';
 
 const StyledDiv = styled.div`
-
+    
     .signin-container{
         visibility: hidden;
         opacity: 0;
@@ -28,27 +28,6 @@ const StyledDiv = styled.div`
             }
         }}
     }
-    
-    .signup-container{
-        visibility: hidden;
-        opacity: 0;
-        width: 300px;
-        height: 600px;
-        top: -200%;
-        left: 0;
-        transition: top 1s ease-in-out, opacity  1s linear;
-        ${props => {
-            if(props['data-style']) {
-                return `
-                    top: ${props['data-style'].sizeTopSignUp};
-                    visibility: ${props['data-style'].visibility};
-                    opacity: ${props['data-style'].opacitySignUp};
-                    animation: ${props['data-style'].animation};
-                `
-            }
-        }}
-    }
-    
     .forgotpassword-container{
         visibility: hidden;
         opacity: 0;
@@ -68,7 +47,6 @@ const StyledDiv = styled.div`
             }
         }}
     }
-    
     .register-container{
         background: url(${imgBackGround}) no-repeat center center;
         -webkit-background-size: cover;
@@ -84,7 +62,6 @@ const StyledDiv = styled.div`
             }
         }}
     }
-    
     .register-container > div{
         background-color: #fff;
         position: absolute;
@@ -98,15 +75,7 @@ const StyledDiv = styled.div`
         overflow: hidden;
         padding: 10px;
     }
-    
-    a{
-        text-decoration: none;
-    }
-    
-    form{
-        padding: 10px;
-    }
-    form .header{
+    .header{
         text-align: center;
         font-size: 20px;
         margin-bottom: 1rem;
@@ -115,21 +84,6 @@ const StyledDiv = styled.div`
         margin-right: .5rem;
     
     }
-    input[type="text"] , input[type=password]{
-        height: 25px;
-        border-top : 0px;
-        border-left : 0px;
-        border-right : 0px;
-        width: 100%;
-        border-color: #4eb1ff;
-    }
-    input[type="text"] , input[type=password]:focus{
-        outline: none !important;
-    }
-    input[type="text"].error , input[type=password].error{
-        border-color: #a61702;
-    }
-    
     .form-group{
         margin-bottom: 1rem;
         width: 100%;
@@ -147,58 +101,12 @@ const StyledDiv = styled.div`
     .text-muted{
         color: #868e96;
     }
-    .text-error{
-        color: #a61702;
-    }
     .text-bold{
         font-weight: bold;
-    }
-    
-    .text-right{
-        text-align: right;
-    }
-    .text-left{
-        text-align: left;
     }
     .text-center{
         text-align: center;
     }
-    
-    .pull-left{
-        float: left;
-    }
-    
-    .pull-right{
-        float: right;
-    }
-    
-    
-    .btn{
-        display: inline-block;
-        font-weight: 400;
-        text-align: center;
-        white-space: nowrap;
-        vertical-align: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        border: 1px solid transparent;
-        padding: .375rem .75rem;
-        font-size: 1rem;
-        line-height: 1.5;
-        cursor: pointer;
-        border-radius: .25rem;
-        transition: background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    }
-    
-    .btn-primary {
-        color: #fff;
-        background-color: #007bff;
-        border-color: #007bff;
-    }
-    
-    
     @keyframes shake {
         10%, 90% {
             transform: translate3d(-1px, 0, 0);
@@ -244,21 +152,6 @@ export default class Login extends Component {
         }
     }
 
-    signUpFunc = () => {
-        this.setState({
-            style: {
-                sizeTopSignIn: '200%',
-                sizeTopSignUp: 0,
-                sizeLeftForgotPass: '-200%',
-                visibility: 'visible',
-                opacitySignIn: 0,
-                opacitySignUp: .9,
-                opacityForgotPass: 0,
-                animation: ''
-            }
-        });
-    };
-
     forgotPasswordFunc = () => {
         this.setState({
             style: {
@@ -300,12 +193,14 @@ export default class Login extends Component {
     };
 
     submit = data => {
-        // data.preventDefault();
-        // console.log('data form', data);
         if(hasIn('username', data) && hasIn('password', data)) {
             this.props.login(data);
             this.props.startLinear()
         }
+    };
+
+    submitFormForgotPass = data => {
+        console.log(data);
     };
 
     render() {
@@ -314,83 +209,35 @@ export default class Login extends Component {
                 <LinearDeterminate />
                 <div className="register-container">
                     <div className="signin-container">
-                        <div className="header text-muted text-bold">
+                        <div className="header text-muted text-bold text-center">
                             ورود
                         </div>
                         <Form onSubmit={this.submit} name="formLogin">
                             <Input label='نام کاربری' type='text' name='username' required />
                             <Input label='رمز عبور' type='password' name='password' required style={{marginTop: 10}}/>
                             <div className="form-group text-center">
-                                <div style={{display: 'inline-flex', marginBottom: 85}}>
-                                    <Button text="ثبت نام" onClick={this.signUpFunc} raised={false} style={{position: 'absolute', right: 3}}/>
-                                    <Button text="بازیابی رمز عبور" onClick={this.forgotPasswordFunc} raised={false} style={{position: 'absolute', left: 3}}/>
+                                <div style={{display: 'inline-flex', marginBottom: 70}}>
+                                    <Button text="بازیابی رمز عبور" onClick={this.forgotPasswordFunc} raised={false} style={{position: 'absolute', right: 3}}/>
                                 </div>
                                 <Button type="submit" text="ورود"/>
                             </div>
                         </Form>
                     </div>
 
-                    <div className="signup-container">
-                        <form>
-                            <div className="header text-muted text-bold">
-                                ثبت نام
-                            </div>
-                            <div className="form-group">
-                                <label>نام کاربری </label>
-                                <input type="text" className="error" name="usename" />
-                                    <small  className="form-text text-error">مقدار نمی تواند خالی باشد</small>
-                            </div>
-                            <div className="form-group">
-                                <label>نام </label>
-                                <input type="text"  name="firstname" />
-                                    <small className="form-text text-error" />
-                            </div>
-                            <div className="form-group">
-                                <label>نام خانوادگی </label>
-                                <input type="text"  name="lastname" />
-                                    <small  className="form-text text-error" />
-                            </div>
-                            <div className="form-group">
-                                <label>رمز عبور  </label>
-                                <input type="password" name="password" />
-                                    <small  className="form-text text-muted">رمز عبور را وارد کنید  </small>
-                            </div>
-                            <div className="form-group">
-                                <label>تکرار رمز عبور  </label>
-                                <input type="password" name="confirmPassword" />
-                                    <small  className="form-text text-muted">تکرار رمز عبور را وارد کنید  </small>
-                            </div>
-                            <div className="form-group">
-                                <a onClick={this.signInFunc}>ورود</a>
-                                <a onClick={this.forgotPasswordFunc} className="pull-left">بازیابی رمز عبور</a>
-                            </div>
-
-                            <div className="form-group text-center">
-                                <input readOnly onClick={() => this.shakeFunc()} className="btn btn-primary text-center" />
-                            </div>
-                        </form>
-                    </div>
-
                     <div className="forgotpassword-container">
-                        <form>
-                            <div className="header text-muted text-bold">
-                                بازیابی رمز عبور
-                            </div>
-                            <div className="form-group">
-                                <label>نام کاربری </label>
-                                <input type="text" className="error" name="firstname" />
-                                    <small  className="form-text text-error">مقدار نمی تواند خالی باشد</small>
-                            </div>
+                        <div className="header text-muted text-bold text-center">
+                            بازیابی رمز عبور
+                        </div>
 
-                            <div className="form-group">
-                                <a onClick={this.signUpFunc}>ثبت نام</a>
-                                <a onClick={this.signInFunc} className="pull-left">ورود</a>
-                            </div>
-
+                        <Form onSubmit={this.submitFormForgotPass} name="formForgotPass">
+                            <Input label='نام کاربری' type='text' name='username' required />
                             <div className="form-group text-center">
-                                <input readOnly onClick={() => this.shakeFunc()}  className="btn btn-primary text-center" />
+                                <div style={{display: 'inline-flex', marginBottom: 70}}>
+                                    <Button text="ورود" onClick={this.signInFunc} raised={false} style={{position: 'absolute', right: 3}}/>
+                                </div>
+                                <Button type="submit" text="ارسال"/>
                             </div>
-                        </form>
+                        </Form>
                     </div>
                 </div>
             </StyledDiv>
