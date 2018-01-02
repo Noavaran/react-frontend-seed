@@ -9,7 +9,9 @@ const lang = {
     "telegram": "تلگرام",
     "instagram": "اینستاگرام",
     "aparat": "آپارات",
-    "back.to.login": "بازگشت به صفحه ورود"
+    "back.to.login": "بازگشت به صفحه ورود",
+    "resetPassword": "بازیابی کلمه عبور",
+    "rePassword": "تکرار کلمه عبور"
 };
 
 export default lang

@@ -9,6 +9,7 @@ import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import Layout from './containers/Layout';
 import SnackBars from './components/SnackBars';
 import {showSnackBars} from './store/snackbars';
+// import ResetPassword from './containers/ResetPassword';
 
 class App extends Component {
 
@@ -35,6 +36,7 @@ class App extends Component {
               })}>
                   <SnackBars />
                   <Login/>
+                  {/*<ResetPassword />*/}
                   {/*<SocketWatcher />*/}
               </MuiThemeProvider>
           )
