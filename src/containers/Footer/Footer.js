@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
-import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 import classNames from 'classnames';
+import styled from 'styled-components';
 
 const drawerWidth = 240;
 
@@ -27,6 +27,14 @@ const styles = theme => ({
     }
 });
 
+const StyledDiv = styled.div`
+    .viewFooter{
+        position: absolute;
+        left: 50%;
+        font-family: BKoodakBold, Arial, Helvetica, sans-serif !important;
+    }
+`;
+
 class Footer extends Component{
 
     state = {
@@ -42,13 +50,15 @@ class Footer extends Component{
     render() {
         const { classes } = this.props;
         return (
-            <AppBar className={`${classNames(classes.appBar, this.state.open && classes.appBarShift)} footerClassName`}>
-                <Toolbar disableGutters={!this.state.open}>
-                    <Typography type="title" color="inherit" noWrap>
-                        footer
-                    </Typography>
-                </Toolbar>
-            </AppBar>
+            <StyledDiv>
+                <AppBar className={`${classNames(classes.appBar, this.state.open && classes.appBarShift)} footerClassName`}>
+                    <Toolbar disableGutters={!this.state.open}>
+                        <div className="viewFooter">
+                            نوآوران
+                        </div>
+                    </Toolbar>
+                </AppBar>
+            </StyledDiv>
         )
     }
 }

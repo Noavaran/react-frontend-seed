@@ -5,9 +5,11 @@ import MenuIcon from 'material-ui-icons/Menu';
 import IconButton from 'material-ui/IconButton';
 import { withStyles } from 'material-ui/styles';
 import classNames from 'classnames';
-import AccountCircle from 'material-ui-icons/AccountCircle';
 import Menu, { MenuItem } from 'material-ui/Menu';
 import {Icon} from '../../components/common';
+import profileImg from './img/profile.jpg';
+import Avatar from '../../components/Avatar';
+
 const drawerWidth = 240;
 
 const styles = theme => ({
@@ -91,10 +93,11 @@ class Header extends Component{
                                 aria-haspopup="true"
                                 onClick={this.handleMenu}
                                 color="contrast">
-                                <AccountCircle />
+                                <Avatar pic={profileImg}/>
                             </IconButton>
                             <Menu
                                 id="menu-appbar"
+                                style={{top: 40}}
                                 anchorEl={this.state.anchorEl}
                                 open={open}
                                 onClose={this.handleClose}>

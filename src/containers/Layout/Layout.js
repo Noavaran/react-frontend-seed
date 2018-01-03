@@ -11,6 +11,7 @@ import Content from '../Content';
 import Footer from '../Footer';
 import Header from '../Header';
 import {Icon} from '../../components/common';
+import profileImg from './img/profile.jpg';
 
 const drawerWidth = 240;
 
@@ -18,6 +19,33 @@ const StyledDiv = styled.div`
     header.footerClassName{
         top: initial !important;
         bottom: 0 !important;
+    }
+    .headerMenu{
+        width: auto;
+        background-color: #fff;
+        color: #000;
+        text-align: center;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-top: -60px;
+    }
+    
+    .headerMenu > img{
+        width: 80px;
+        height: 80px;
+        border: 1px solid gray;
+        border-radius: 50%;
+    }
+    
+    .headerMenu > h4{
+        margin-top: 0px;
+        font-family: BKoodakBold, Arial, Helvetica, sans-serif !important;
+    }
+    
+    .headerMenu > h6{
+        margin-top: -10px;
+        color: #827d7d;
+        font-family: BKoodakBold, Arial, Helvetica, sans-serif !important;
     }
 `;
 
@@ -96,6 +124,20 @@ class Layout extends Component {
         this.setState({open});
     };
 
+    renderHeaderHeader = () => {
+        if(this.state.open) {
+            return (
+                <div className="headerMenu">
+                    <img src={profileImg} alt="نوآوران"/>
+                    <h4>نوآوران</h4>
+                    <h6>ارایه راهکار های نوین در زمینه پروژه های مبتنی بر وب</h6>
+                </div>
+            )
+        } else {
+            return null
+        }
+    };
+
     render() {
         const { classes, theme } = this.props;
         return (
@@ -107,9 +149,7 @@ class Layout extends Component {
                     <Header open={this.state.open} isOpen={this.handleIsOpen}/>
                     <Drawer
                         type="permanent"
-                        classes={{
-                            paper: classNames(classes.drawerPaper, !this.state.open && classes.drawerPaperClose),
-                        }}
+                        classes={{paper: classNames(classes.drawerPaper, !this.state.open && classes.drawerPaperClose)}}
                         open={this.state.open}>
                         <div className={classes.drawerInner}>
                             <div className={classes.drawerHeader}>
@@ -117,6 +157,7 @@ class Layout extends Component {
                                     {theme.direction === 'rtl' ? <Icon name="chevron_right"/> : <Icon name="chevron_left"/>}
                                 </IconButton>
                             </div>
+                            {this.renderHeaderHeader()}
                             <Divider />
                             <Menu />
                         </div>
